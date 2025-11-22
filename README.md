@@ -1,0 +1,2 @@
+# trdp
+Team Research and Development Project - Group Project Report. In this assignment, we will select a dataset and develop both a research question (RQ) and a corresponding hypothesis, produce visualisations and statistical analysis.
