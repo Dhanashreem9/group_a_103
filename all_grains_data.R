@@ -38,3 +38,18 @@ df<- rename(df,crop_type = commodity,
            max_price=high,
            low_price=low,
            closing_price=close )
+
+
+
+df2 <- df[df$crop_type %in% c("Rough Rice", "Oat"), ]
+
+
+# --- 3b. Histogram for oat WITH normal curve ------------------------
+oat <- df2$closing_price[df2$crop_type == "Oat"]
+
+hist(oat,
+     probability = TRUE,
+     main = "Histogram of Oat Closing Prices\nwith Normal Curve",
+     xlab = "Closing Price",
+     col = "lightgray",
+     breaks = 20)
