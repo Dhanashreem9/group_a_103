@@ -32,4 +32,9 @@ df
 #---------------------------------------
 head(df, 5)
 
-#to rename the coloumn in thbe dataset
+#to rename the coloumn in the dataset
+df<- rename(df,crop_type = commodity,
+           opening_price = open,
+           max_price=high,
+           low_price=low,
+           closing_price=close )
