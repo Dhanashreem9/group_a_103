@@ -53,3 +53,10 @@ hist(oat,
      xlab = "Closing Price",
      col = "lightgray",
      breaks = 20)
+
+
+# Normal curve overlay
+curve(dnorm(x, mean = mean(oat, na.rm = TRUE),
+            sd = sd(oat, na.rm = TRUE)),
+      add = TRUE,
+      lwd = 2)
