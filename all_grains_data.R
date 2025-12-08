@@ -31,3 +31,5 @@ df
 #display first 5 rows
 #---------------------------------------
 head(df, 5)
+
+#to rename the coloumn in thbe dataset
