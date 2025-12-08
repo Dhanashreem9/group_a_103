@@ -60,3 +60,17 @@ curve(dnorm(x, mean = mean(oat, na.rm = TRUE),
             sd = sd(oat, na.rm = TRUE)),
       add = TRUE,
       lwd = 2)
+
+
+
+#---------------------------------------
+# Line plot : Oat 
+#---------------------------------------
+
+oat_data <- filter(df, crop_type == "Oat")
+oat_data <- mutate(oat_data, date = as.Date(date, format="%d-%m-%Y"))
+
+plot(oat_data$date, oat_data$closing_price,
+     type = "l", col = "blue",
+     xlab = "Date", ylab = "Closing Price",
+     main = "Oat Closing Prices")
