@@ -155,6 +155,17 @@ curve(dnorm(x, mean = mean(rice), sd = sd(rice)),
 curve(dnorm(x, mean = mean(oat), sd = sd(oat)),
       add = TRUE, col = "red", lwd = 2)
 
+t_test_result <- t.test(rice, oat,
+                        alternative = "two.sided",
+                        var.equal = FALSE)   # Welch t-test
+
+t_test_result
+
+
+
+
+
+
 #---------------------------------------
 # Line plot : Oat 
 #---------------------------------------
