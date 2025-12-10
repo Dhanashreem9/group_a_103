@@ -99,14 +99,15 @@ curve(dnorm(x, mean = mean(oat, na.rm = TRUE),
       lwd = 2)
 
 # ---------------------------
-# 1. Boxplot (close prices)
+# 1. Boxplot (closing prices)
 # ---------------------------
 boxplot(closing_price ~ crop_type,
-        data =df,
+        data = df,
         cex.axis = 0.6,
         main = "Boxplot of Closing price Distribution by the type of crop",
         xlab = "Type of crop",
         ylab = "Closing Price",
+        col = c("lightyellow", "lightpink", "lightblue", "lightgreen", "plum", "lightgray"),
         outline = TRUE)
 
 # --- Filter Rough Rice and Oat ----
@@ -208,6 +209,22 @@ pie(avg_values$closing_price,
 # Average closing prices : Rough Rice and Oat - Bar plot
 #--------------------------------------------------------
 
+# Create bar plot
+bp <- barplot(avg_values$closing_price,
+              names.arg = avg_values$crop_type,
+              col = c("skyblue", "lightgreen"),
+              ylim = c(0, max(avg_values$closing_price) * 1.2),
+              main = "Average Closing Price: Rough Rice vs Oat",
+              ylab = "Average Closing Price",
+              xlab = "Crop Type",
+              las = 1)
+
+# Add value labels on top of bars
+text(x = bp,
+     y = avg_values$closing_price,
+     labels = round(avg_values$closing_price, 2),
+     pos = 3,      # position above the bars
+     cex = 1)      # text size
 
 #------------------------------------------------------
 # Histogram : Rough rice volume distribution
@@ -232,7 +249,9 @@ hist(rough_rice_data$volume,
 
 avg_close<-summarise(group_by(df, crop_type),
                      avg_close=mean(closing_price, na.rm = TRUE))
+
 par(mar = c(9,4,4,2))
+
 barplot(avg_close$avg_close,
         names.arg = avg_close$crop_type,
         col = rainbow(nrow(avg_close)),
@@ -241,7 +260,8 @@ barplot(avg_close$avg_close,
         cex.axis = 0.9,
         cex.names = 0.9,
         ylab = "Price",
-        ylim = c(0,1900)
+        ylim = c(0,1900))
+        
 #--------------------------------------------------------
 # Overall average closing prices by commodity - Pie chart
 #--------------------------------------------------------
@@ -266,21 +286,3 @@ pie(avg_close$perc,
     labels = labels,
     col = rainbow(6),
     main = "Average Closing Price Share by Crop Type")
-<<<<<<< HEAD
-# Create bar plot
-barplot(avg_values$closing_price,
-        names.arg = avg_values$crop_type,
-        col = c("skyblue", "lightgreen"),
-        ylim = c(0, max(avg_values$closing_price) * 1.2),
-        main = "Average Closing Price: Rough Rice vs Oat",
-        ylab = "Average Closing Price",
-        xlab = "Crop Type",
-        las = 1)
-=======
-<<<<<<< HEAD
->>>>>>> d2e1bf1afa502467dcc2e3b1245bc6b154ddcdb1
-
-
-=======
->>>>>>> b14c755f29f16537b2b6dd24a203d507ffeedcd8
->>>>>>> 0b9bf2549a59574636f12c497261ce6547153380
