@@ -101,6 +101,13 @@ curve(dnorm(x, mean = mean(oat, na.rm = TRUE),
 # ---------------------------
 # 1. Boxplot (close prices)
 # ---------------------------
+boxplot(closing_price ~ crop_type,
+        data =df,
+        cex.axis = 0.6,
+        main = "Boxplot of Closing price Distribution by the type of crop",
+        xlab = "Type of crop",
+        ylab = "Closing Price",
+        outline = TRUE)
 
 # --- Filter Rough Rice and Oat ----
 rice <- df2$closing_price[df2$crop_type == "Rough Rice"]
@@ -223,7 +230,18 @@ hist(rough_rice_data$volume,
 # Average closing price by the type of crops - Bar plot
 #------------------------------------------------------
 
-
+avg_close<-summarise(group_by(df, crop_type),
+                     avg_close=mean(closing_price, na.rm = TRUE))
+par(mar = c(9,4,4,2))
+barplot(avg_close$avg_close,
+        names.arg = avg_close$crop_type,
+        col = rainbow(nrow(avg_close)),
+        main = "Average Closing Price by Crop type",
+        las = 2,
+        cex.axis = 0.9,
+        cex.names = 0.9,
+        ylab = "Price",
+        ylim = c(0,1900)
 #--------------------------------------------------------
 # Overall average closing prices by commodity - Pie chart
 #--------------------------------------------------------
@@ -248,6 +266,7 @@ pie(avg_close$perc,
     labels = labels,
     col = rainbow(6),
     main = "Average Closing Price Share by Crop Type")
+<<<<<<< HEAD
 # Create bar plot
 barplot(avg_values$closing_price,
         names.arg = avg_values$crop_type,
@@ -257,3 +276,11 @@ barplot(avg_values$closing_price,
         ylab = "Average Closing Price",
         xlab = "Crop Type",
         las = 1)
+=======
+<<<<<<< HEAD
+>>>>>>> d2e1bf1afa502467dcc2e3b1245bc6b154ddcdb1
+
+
+=======
+>>>>>>> b14c755f29f16537b2b6dd24a203d507ffeedcd8
+>>>>>>> 0b9bf2549a59574636f12c497261ce6547153380
