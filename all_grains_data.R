@@ -32,35 +32,34 @@ df
 #---------------------------------------
 head(df, 5)
 
-<<<<<<< HEAD
+
 # to rename the columns in the dataset
 df <- rename(df, crop_type  = commodity,
              opening_price = open,
              max_price = high,
              low_price = low,
              closing_price = close)
-=======
+
 #---------------------------------------
 #display last 5 rows
 #---------------------------------------
 tail(df,5)
 
 #to rename the coloumn in the dataset
-df<- rename(df,crop_type = commodity,
+df <- rename(df,crop_type = commodity,
            opening_price = open,
            max_price=high,
            low_price=low,
-           closing_price=close )
->>>>>>> a78fd82c2b54ba38b34d7bbd44040544b1141571
+           closing_price=close)
+ 
 
 df
 
 summary(df)
 
-<<<<<<< HEAD
 
 
-=======
+
 # Identify the commodity with the highest mean closing price
 mean_close <- aggregate(closing_price ~ crop_type, df, mean)
 highest <- mean_close$crop_type[which.max(mean_close$closing_price)]
@@ -313,4 +312,4 @@ pie(avg_close$perc,
     labels = labels,
     col = rainbow(6),
     main = "Average Closing Price Share by Crop Type")
->>>>>>> a78fd82c2b54ba38b34d7bbd44040544b1141571
+
