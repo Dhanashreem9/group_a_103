@@ -75,3 +75,16 @@ plot(oat_data$date, oat_data$closing_price,
      type = "l", col = "blue",
      xlab = "Date", ylab = "Closing Price",
      main = "Oat Closing Prices")
+
+
+
+#------------------------------------------------------
+# Histogram : Rough rice volume distribution
+#------------------------------------------------------
+
+rough_rice_data <- filter(df, crop_type == "Rough Rice")
+
+hist(rough_rice_data$volume,
+     col = "lightgreen",
+     main = "Rough Rice Trading Volume Distribution",
+     xlab = "Volume")
