@@ -180,11 +180,8 @@ plot(oat_data$date, oat_data$closing_price,
      xlab = "Date", ylab = "Closing Price",
      main = "Oat Closing Prices")
 
-<<<<<<< HEAD
-
-=======
 #--------------------------------------------------------
-# Average closing prices : Rough Rice and Oat
+# Average closing prices : Rough Rice and Oat - Pie chart
 #--------------------------------------------------------
 
 # Filter only Rough Rice and Oat
@@ -199,22 +196,22 @@ pie(avg_values$closing_price,
                    "\nAvg:", round(avg_values$closing_price, 1)),
     col = c("skyblue", "lightgreen"),
     main = "Average Closing Price: Rough Rice vs Oat")
->>>>>>> d2e1bf1afa502467dcc2e3b1245bc6b154ddcdb1
+
+#--------------------------------------------------------
+# Average closing prices : Rough Rice and Oat - Bar plot
+#--------------------------------------------------------
+
 
 #------------------------------------------------------
 # Histogram : Rough rice volume distribution
 #------------------------------------------------------
 
-<<<<<<< HEAD
 rough_rice_data <- filter(df, crop_type == "Rough Rice")
 
 hist(rough_rice_data$volume,
      col = "lightgreen",
      main = "Rough Rice Trading Volume Distribution",
      xlab = "Volume")
-=======
-
-
 
 #------------------------------------------------------
 # Histogram : Oat volume distribution
@@ -251,4 +248,3 @@ pie(avg_close$perc,
     labels = labels,
     col = rainbow(6),
     main = "Average Closing Price Share by Crop Type")
->>>>>>> d2e1bf1afa502467dcc2e3b1245bc6b154ddcdb1
