@@ -230,7 +230,18 @@ hist(rough_rice_data$volume,
 # Average closing price by the type of crops - Bar plot
 #------------------------------------------------------
 
-
+avg_close<-summarise(group_by(df, crop_type),
+                     avg_close=mean(closing_price, na.rm = TRUE))
+par(mar = c(9,4,4,2))
+barplot(avg_close$avg_close,
+        names.arg = avg_close$crop_type,
+        col = rainbow(nrow(avg_close)),
+        main = "Average Closing Price by Crop type",
+        las = 2,
+        cex.axis = 0.9,
+        cex.names = 0.9,
+        ylab = "Price",
+        ylim = c(0,1900)
 #--------------------------------------------------------
 # Overall average closing prices by commodity - Pie chart
 #--------------------------------------------------------
