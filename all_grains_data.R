@@ -101,6 +101,13 @@ curve(dnorm(x, mean = mean(oat, na.rm = TRUE),
 # ---------------------------
 # 1. Boxplot (close prices)
 # ---------------------------
+boxplot(closing_price ~ crop_type,
+        data =df,
+        cex.axis = 0.6,
+        main = "Boxplot of Closing price Distribution by the type of crop",
+        xlab = "Type of crop",
+        ylab = "Closing Price",
+        outline = TRUE)
 
 # --- Filter Rough Rice and Oat ----
 rice <- df2$closing_price[df2$crop_type == "Rough Rice"]
@@ -252,3 +259,5 @@ pie(avg_close$perc,
     col = rainbow(6),
     main = "Average Closing Price Share by Crop Type")
 >>>>>>> d2e1bf1afa502467dcc2e3b1245bc6b154ddcdb1
+
+
