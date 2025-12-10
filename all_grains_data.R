@@ -32,7 +32,11 @@ df
 #---------------------------------------
 head(df, 5)
 
+#---------------------------------------
+#display last 5 rows
+#---------------------------------------
 tail(df,5)
+
 #to rename the coloumn in the dataset
 df<- rename(df,crop_type = commodity,
            opening_price = open,
