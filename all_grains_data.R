@@ -248,3 +248,12 @@ pie(avg_close$perc,
     labels = labels,
     col = rainbow(6),
     main = "Average Closing Price Share by Crop Type")
+# Create bar plot
+barplot(avg_values$closing_price,
+        names.arg = avg_values$crop_type,
+        col = c("skyblue", "lightgreen"),
+        ylim = c(0, max(avg_values$closing_price) * 1.2),
+        main = "Average Closing Price: Rough Rice vs Oat",
+        ylab = "Average Closing Price",
+        xlab = "Crop Type",
+        las = 1)
