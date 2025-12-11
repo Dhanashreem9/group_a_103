@@ -32,33 +32,21 @@ df
 #---------------------------------------
 head(df, 5)
 
-
-# to rename the columns in the dataset
-df <- rename(df, crop_type  = commodity,
-             opening_price = open,
-             max_price = high,
-             low_price = low,
-             closing_price = close)
-
 #---------------------------------------
 #display last 5 rows
 #---------------------------------------
 tail(df,5)
 
-#to rename the coloumn in the dataset
+#to rename the column in the dataset
 df <- rename(df,crop_type = commodity,
            opening_price = open,
            max_price=high,
            low_price=low,
            closing_price=close)
- 
 
 df
 
 summary(df)
-
-
-
 
 # Identify the commodity with the highest mean closing price
 mean_close <- aggregate(closing_price ~ crop_type, df, mean)
@@ -69,6 +57,16 @@ highest <- mean_close$crop_type[which.max(mean_close$closing_price)]
 #---------------------------------------
 
 df2 <- df[df$crop_type %in% c("Rough Rice", "Oat"), ]
+
+#-------------------------------------------------
+# 2. Boxplot of closing prices : Rough Rice vs Oat
+#-------------------------------------------------
+boxplot(closing_price ~ crop_type,
+        data = df2,
+        main = "Boxplot of Closing Prices: Rough Rice vs Oat",
+        xlab = "Commodity",
+        ylab = "Closing Price",
+        col = c("lightblue", "lightgreen"))
 
 #------------------------------------------------
 # 3a. Histogram for Rough Rice WITH normal curve
@@ -116,8 +114,9 @@ curve(dnorm(x, mean = mean(oat, na.rm = TRUE),
 boxplot(closing_price ~ crop_type,
         data = df,
         cex.axis = 0.6,
-        main = "Boxplot of Closing price Distribution by the type of crop",
-        xlab = "Type of crop",
+        main = "Boxplot of Closing price Distribution 
+        by the type of crop",
+        xlab = "Commodity",
         ylab = "Closing Price",
         col = c("lightyellow", "lightpink", "lightblue", "lightgreen", "plum", "lightgray"),
         outline = TRUE)
@@ -253,7 +252,6 @@ hist(rough_rice_data$volume,
 # Histogram : Oat volume distribution
 #------------------------------------------------------
 
-
 oat_data <- filter(df, crop_type == "Oat")
 
 # Get histogram data without plotting
@@ -267,7 +265,6 @@ hist(oat_data$volume,
      main = "Oat Trading Volume Distribution",
      xlab = "Volume", 
      ylim=c(0,y_max))
-
 
 #------------------------------------------------------
 # Average closing price by the type of crops - Bar plot
