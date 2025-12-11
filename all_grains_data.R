@@ -309,4 +309,3 @@ pie(avg_close$perc,
     labels = labels,
     col = rainbow(6),
     main = "Average Closing Price Share by Crop Type")
-
