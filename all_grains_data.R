@@ -193,10 +193,14 @@ text(x = bp,
 
 rough_rice_data <- filter(df, crop_type == "Rough Rice")
 
+# Extend y-axis by adding buffer to max count
+y_max <- max(hist_data$counts) * 1.2  # 20% higher than max
+
 hist(rough_rice_data$volume,
      col = "lightgreen",
      main = "Rough Rice Trading Volume Distribution",
-     xlab = "Volume")
+     xlab = "Volume",
+     ylim = c(0,y_max))
 
 #------------------------------------------------------
 # Histogram : Oat volume distribution
