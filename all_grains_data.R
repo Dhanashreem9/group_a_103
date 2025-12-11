@@ -68,59 +68,9 @@ boxplot(closing_price ~ crop_type,
         ylab = "Closing Price",
         col = c("lightblue", "lightgreen"))
 
-#------------------------------------------------
-# 3a. Histogram for Rough Rice WITH normal curve
-#------------------------------------------------
-
-rice <- df2$closing_price[df2$crop_type == "Rough Rice"]
-
-hist(rice,
-     probability = TRUE,
-     main = "Histogram of Rough Rice Closing Prices\nwith Normal Curve",
-     xlab = "Closing Price",
-     col = "lightgray",
-     breaks = 20)
-
-# Normal curve overlay
-curve(dnorm(x, mean = mean(rice, na.rm = TRUE),
-            sd = sd(rice, na.rm = TRUE)),
-      add = TRUE,
-      lwd = 2)
-
-df
-
-#------------------------------------------------
-# 3b. Histogram for oat WITH normal curve 
-#------------------------------------------------
-
-oat <- df2$closing_price[df2$crop_type == "Oat"]
-
-hist(oat,
-     probability = TRUE,
-     main = "Histogram of Oat Closing Prices\nwith Normal Curve",
-     xlab = "Closing Price",
-     col = "lightgray",
-     breaks = 20)
-
-# Normal curve overlay
-curve(dnorm(x, mean = mean(oat, na.rm = TRUE),
-            sd = sd(oat, na.rm = TRUE)),
-      add = TRUE,
-      lwd = 2)
-
-# ---------------------------
-# 1. Boxplot (closing prices)
-# ---------------------------
-boxplot(closing_price ~ crop_type,
-        data = df,
-        cex.axis = 0.6,
-        main = "Boxplot of Closing price Distribution 
-        by the type of crop",
-        xlab = "Commodity",
-        ylab = "Closing Price",
-        col = c("lightyellow", "lightpink", "lightblue", "lightgreen", "plum", "lightgray"),
-        outline = TRUE)
-
+#-------------------------------------------------
+# 3. Combined Histogram: Rough Rice vs Oat with Normal Curves
+#-------------------------------------------------
 # --- Filter Rough Rice and Oat ----
 rice <- df2$closing_price[df2$crop_type == "Rough Rice"]
 oat  <- df2$closing_price[df2$crop_type == "Oat"]
@@ -184,7 +134,7 @@ rough_rice_data <- mutate(rough_rice_data, date = as.Date(date, format="%d-%m-%Y
 
 plot(rough_rice_data$date, rough_rice_data$closing_price,
      type = "l", col = "blue",
-     xlab = "Date", ylab = "Closing Price",
+     xlab = "Year", ylab = "Closing Price",
      main = "Rough rice Closing Prices")
 
 #---------------------------------------
@@ -196,7 +146,7 @@ oat_data <- mutate(oat_data, date = as.Date(date, format="%d-%m-%Y"))
 
 plot(oat_data$date, oat_data$closing_price,
      type = "l", col = "blue",
-     xlab = "Date", ylab = "Closing Price",
+     xlab = "Year", ylab = "Closing Price",
      main = "Oat Closing Prices")
 
 #--------------------------------------------------------
@@ -265,6 +215,19 @@ hist(oat_data$volume,
      main = "Oat Trading Volume Distribution",
      xlab = "Volume", 
      ylim=c(0,y_max))
+
+# ---------------------------
+# Boxplot (closing prices)
+# ---------------------------
+boxplot(closing_price ~ crop_type,
+        data = df,
+        cex.axis = 0.6,
+        main = "Boxplot of Closing price Distribution 
+        by the type of crop",
+        xlab = "Commodity",
+        ylab = "Closing Price",
+        col = c("lightyellow", "lightpink", "lightblue", "lightgreen", "plum", "lightgray"),
+        outline = TRUE)
 
 #------------------------------------------------------
 # Average closing price by the type of crops - Bar plot
